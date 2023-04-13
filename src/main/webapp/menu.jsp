@@ -5,20 +5,35 @@
 %>
 <script src="./resources/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-	let sessionId
 	$(function(){
-		$('a.nav-link dropdown-toggle').click(function(){
+		$('a#navbarDropdown').click(function(){
 			$('div.dropdown-menu').show();
-		})
+		});
+		$('div.dropdown-menu').click(function(){
+			$(this).hide();
+		});
 	});
-	$(function(){
-		if(){
-			
-		}
-		$('div.dropdown-menu').hide();
+	
+	function search(){
 		
-	});
+	}
 </script>
+<style>
+	nav > a:hover{
+		background: gray;
+	}
+	nav > div > ul > li:hover > a{
+		color: red; 
+		background: gray;
+	}
+	nav > div > ul > li > div > a:hover{
+		color: white; 
+		background: black;
+	}
+	nav > div > ul > li > div.dropdown-menu{
+		background: gray;
+	}
+</style>
 
 <nav class="navbar navbar-expand  navbar-dark bg-dark">
   <a class="navbar-brand" href="#">메뉴</a>
@@ -31,27 +46,39 @@
       <li class="nav-item active">
         <a class="nav-link" href="welcome.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
+      <c:choose>
+	  	<c:when test="${empty sessionId }">   	
+	      <li class="nav-item">
+	        <a class="nav-link" href="<c:url value="/member/loginMember.jsp"/>">로그인</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link disabled" href="<c:out value="/member/addMember.jsp"/>">회원가입</a>
+	      </li>
+	  	</c:when>
+	  	<c:otherwise>
+	  		<li class="nav-item">
+	        <a class="nav-link" href="<c:out value="/member/logoutMember.jsp"/>">로그아웃</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link disabled" href="<c:out value="/member/updateMember.jsp"/>">[<%=sessionId %>]님</a>
+	      </li>
+	  	</c:otherwise>
+      </c:choose>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           카테고리
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">이달의 상품</a>
+          <a class="dropdown-item" href="#">회원가입</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">장바구니</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">로그인</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick='javascript:search();'>검색</button>
     </form>
   </div>
 </nav>
