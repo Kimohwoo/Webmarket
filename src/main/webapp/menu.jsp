@@ -9,14 +9,29 @@
 		$('a#navbarDropdown').click(function(){
 			$('div.dropdown-menu').show();
 		});
-		$('div.dropdown-menu').click(function(){
+		
+		$('div.dropdown-menu').mouseleave(function(){
 			$(this).hide();
 		});
-	});
-	
-	function search(){
 		
+	});
+
+	let ajax1;
+	
+	function selectData(){
+		let form_name = "searchForm";
+		let user_id = document.forms[]
 	}
+	
+	function mySession(){
+		let sessionId = '<%=sessionId%>';
+		if(sessionId == "null"){
+			
+		} else {
+			
+		}
+	}
+	
 </script>
 <style>
 	nav > a:hover{
@@ -76,7 +91,7 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0" name = "searchForm">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick='javascript:search();'>검색</button>
     </form>
