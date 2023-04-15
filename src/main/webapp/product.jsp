@@ -29,7 +29,7 @@
 <!--  		Product product = dao.getProductById(id); -->
 <%-- 	%> --%>
 
-	<%@ include file="dbconn.jsp"%>
+	<%@ include file="./db/dbconn.jsp"%>
 	<%
 		String id = request.getParameter("id");
 // 		String sql = "select * from product where p_id = '"+id+"'";

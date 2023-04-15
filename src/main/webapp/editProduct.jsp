@@ -27,7 +27,7 @@
 
 	<div class="container">
 		<div class="row" align="center">
-			<%@ include file="dbconn.jsp"%>
+			<%@ include file="./db/dbconn.jsp"%>
 			<%
 				String sql = "select * from product";
 				pstmt = conn.prepareStatement(sql);

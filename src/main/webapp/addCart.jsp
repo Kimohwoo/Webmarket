@@ -2,7 +2,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.Product"%>
 <%-- <%@ page import="dao.ProductRepository"%> --%>
-<%@ include file="dbconn.jsp"%>
+<%@ include file="./db/dbconn.jsp"%>
 <%
 	String id = request.getParameter("id");
 

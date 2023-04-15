@@ -28,7 +28,7 @@
 <!--  					Product product = listOfProducts.get(i); -->
 <%-- 			%> --%>
 
-		<%@ include file="dbconn.jsp"%>
+		<%@ include file="./db/dbconn.jsp"%>
 		<%
 			String sql = "select * from product";
 			pstmt = conn.prepareStatement(sql);

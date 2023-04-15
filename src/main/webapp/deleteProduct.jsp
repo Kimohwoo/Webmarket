@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.sql.*"%>
-<%@ include file="dbconn.jsp"%>
+<%@ include file="./db/dbconn.jsp"%>
 <%
 	String productId = request.getParameter("id");	
 

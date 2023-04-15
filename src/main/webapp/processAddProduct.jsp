@@ -5,7 +5,7 @@
 <%-- <%@ page import="dto.Product"%> --%>
 <%-- <%@ page import="dao.ProductRepository"%> --%>
 <%@ page import="java.sql.*"%>
-<%@ include file="dbconn.jsp" %>
+<%@ include file="./db/dbconn.jsp" %>
 
 <%
 	request.setCharacterEncoding("UTF-8");

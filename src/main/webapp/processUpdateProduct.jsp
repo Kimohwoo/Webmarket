@@ -3,7 +3,7 @@
 <%@ page import="com.oreilly.servlet.multipart.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.sql.*"%>
-<%@ include file="dbconn.jsp" %>
+<%@ include file="./db/dbconn.jsp" %>
 <%
 	String filename = "";
 	//	String realFolder = "C:\\upload"; //웹 어플리케이션상의 절대 경로

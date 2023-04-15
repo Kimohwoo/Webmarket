@@ -1,6 +1,6 @@
-drop table member2;
+drop table member;
 
-create table member2 ( 
+create table member ( 
     id varchar2(10) not null,
     password varchar2(10) not null,
     name varchar2(10) not null,
@@ -13,5 +13,5 @@ create table member2 (
     primary key(id) 
 ) ;
 
-select * from member2;
+select * from member;
 

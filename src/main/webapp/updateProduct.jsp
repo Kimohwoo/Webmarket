@@ -12,7 +12,7 @@
 			<h1 class="display-3">상품 수정</h1>
 		</div>
 	</div>
-	<%@ include file="dbconn.jsp"%>
+	<%@ include file="./db/dbconn.jsp"%>
 	<%
 		String productId = request.getParameter("id");
 
