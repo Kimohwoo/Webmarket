@@ -142,7 +142,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="welcome.jsp">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<c:url value="/welcome.jsp"/>">Home <span class="sr-only">(current)</span></a>
       </li>
       <c:choose>
 	  	<c:when test="${empty sessionId }">   	
@@ -154,12 +154,12 @@
 	      </li>
 	  	</c:when>
 	  	<c:otherwise>
-	  		<li class="nav-item">
-	        <a class="nav-link" href="<c:out value="/member/logoutMember.jsp"/>">로그아웃</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link disabled" href="<c:out value="/member/updateMember.jsp"/>">[<%=sessionId %>]님</a>
-	      </li>
+			<li class="nav-item">
+				<a class="nav-link disabled" href="<c:out value="/member/updateMember.jsp"/>">[<%=sessionId %>]님</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="<c:out value="/member/logoutMember.jsp"/>">로그아웃</a>
+			</li>
 	  	</c:otherwise>
       </c:choose>
       <li class="nav-item dropdown">
@@ -170,7 +170,7 @@
           <a class="dropdown-item" href="#">이달의 상품</a>
           <a class="dropdown-item" href="#">회원가입</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">장바구니</a>
+          <a class="dropdown-item" href="<c:url value="/cart.jsp"/>">장바구니</a>
         </div>
       </li>
     </ul>
