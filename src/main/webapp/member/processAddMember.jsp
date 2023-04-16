@@ -30,7 +30,7 @@
 	driver="oracle.jdbc.driver.OracleDriver" user="webmarket" password="webmarket1234" />
 
 <sql:update dataSource="${dataSource}" var="resultSet">
-   INSERT INTO member2 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+   INSERT INTO member VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
    <sql:param value="<%=id%>" />
 	<sql:param value="<%=password%>" />
 	<sql:param value="<%=name%>" />

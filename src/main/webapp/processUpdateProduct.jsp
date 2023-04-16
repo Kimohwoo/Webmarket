@@ -1,4 +1,4 @@
-﻿<%@ page contentType="text/html; charset=utf-8"%>
+﻿<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="com.oreilly.servlet.*"%>
 <%@ page import="com.oreilly.servlet.multipart.*"%>
 <%@ page import="java.util.*"%>
@@ -11,7 +11,7 @@
 	System.out.println("경로확인---->"+realFolder);
 	
 	
-	String encType = "utf-8"; //인코딩 타입
+	String encType = "UTF-8"; //인코딩 타입
 	int maxSize = 5 * 1024 * 1024; //최대 업로드될 파일의 크기5Mb
 
 	MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType,

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.net.URLDecoder"%>
 <html>
 <head>
@@ -21,9 +21,9 @@
 				Cookie thisCookie = cookies[i];
 				String n = thisCookie.getName();
 				if (n.equals("Shipping_cartId"))
-					shipping_cartId = URLDecoder.decode((thisCookie.getValue()), "utf-8");
+					shipping_cartId = URLDecoder.decode((thisCookie.getValue()), "UTF-8");
 				if (n.equals("Shipping_shippingDate"))
-					shipping_shippingDate = URLDecoder.decode((thisCookie.getValue()), "utf-8");
+					shipping_shippingDate = URLDecoder.decode((thisCookie.getValue()), "UTF-8");
 			}
 		}
 	%>

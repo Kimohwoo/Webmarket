@@ -7,7 +7,7 @@
 	<security-constraint>
 		<display-name>WebMarket Security</display-name>
 		<web-resource-collection>
-			<web-resource-name>WebMarket</web-resource-name>
+			<web-resource-name>WebMarket2</web-resource-name>
 			<description></description>
 <!-- 			<url-pattern>/addProduct.jsp</url-pattern> -->
 <!-- 			<url-pattern>/editProduct.jsp</url-pattern> -->
@@ -26,10 +26,10 @@
 	</login-config>
 
 	<!-- 11장 예외처리 -->
-<!-- 	<error-page> -->
-<!-- 		<error-code>404</error-code> -->
-<!-- 		<location>/exceptionNoPage.jsp</location> -->
-<!-- 	</error-page> -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/exceptionNoPage.jsp</location>
+	</error-page>
 	
 	<!-- 12장 필터 -->
 <!-- 	<filter> -->
@@ -46,7 +46,7 @@
 <!-- 		<filter-class>filter.LogFileFilter</filter-class> -->
 <!-- 		<init-param> -->
 <!-- 			<param-name>filename</param-name> -->
-<!-- 			<param-value>C:\Users\kowko\Desktop\Coding\logs</param-value> -->
+<!-- 			<param-value>C:\\Users\kowko\Desktop\Coding\logs</param-value> -->
 <!-- 		</init-param> -->
 <!-- 	</filter> -->
 <!-- 	<filter-mapping> -->

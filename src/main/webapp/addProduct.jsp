@@ -1,5 +1,12 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	String sessionId = (String)session.getAttribute("sessionId");
+	if(!(sessionId.equals("admin"))){
+		response.sendRedirect("./member/loginMember.jsp");
+	}
+		
+%>
 <html>
 <head>
 <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
@@ -20,62 +27,53 @@
 			<a href="?language=ko" >Korean</a>|<a href="?language=en" >English</a>
 			<a href="logout.jsp" class="btn btn-sm btn-success pull-right">logout</a>   
 		</div>	
-		<form name="newProduct" action="./processAddProduct.jsp" class="form-horizontal" method="post" enctype ="multipart/form-data">
+		<form name="newBook" action="./processAddProduct.jsp" class="form-horizontal" method="post" enctype ="multipart/form-data">
 			<div class="form-group row">
-				<label class="col-sm-2"><fmt:message key="productId" /></label>
+				<label class="col-sm-2"><fmt:message key="bookId" /></label>
 				<div class="col-sm-3">
-					<input type="text" id ="productId" name="productId" class="form-control" >
+					<input type="text" id ="bookId" name="bookId" class="form-control" >
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2"><fmt:message key="pname" /></label>
+				<label class="col-sm-2"><fmt:message key="bname" /></label>
 				<div class="col-sm-3">
-					<input type="text" id ="name" name="name" class="form-control" >
+					<input type="text" id ="bname" name="bname" class="form-control" >
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2"><fmt:message key="unitPrice"/></label>
+				<label class="col-sm-2"><fmt:message key="author"/></label>
 				<div class="col-sm-3">
-					<input type="text" id ="unitPrice" name="unitPrice" class="form-control" >
+					<input type="text" id ="author" name="author" class="form-control" >
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2"><fmt:message key="publisher" /></label>
+				<div class="col-sm-5">
+					<input type="text" id ="publisher" name="publiser" class="form-control" >
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2"><fmt:message key="publisher_date"/></label>
+				<div class="col-sm-3">
+					<input type="text" id="publisher_date" name="publisher_date" class="form-control">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2"><fmt:message key="description" /></label>
-				<div class="col-sm-5">
-					<textarea name="description" cols="50" rows="2"
-						class="form-control"></textarea>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2"><fmt:message key="manufacturer"/></label>
 				<div class="col-sm-3">
-					<input type="text" name="manufacturer" class="form-control">
+					<textarea name="description" rows="2" cols="50" class="form-control"></textarea>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2"><fmt:message key="category" /></label>
+				<label class="col-sm-2"><fmt:message key="bookPrice" /></label>
 				<div class="col-sm-3">
-					<input type="text" name="category" class="form-control" >
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2"><fmt:message key="unitsInStock" /></label>
-				<div class="col-sm-3">
-					<input type="text" id ="unitsInStock" name="unitsInStock" class="form-control" >
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2"><fmt:message key="condition" /></label>
-				<div class="col-sm-5">
-					<input type="radio" name="condition" value="New " ><fmt:message key="condition_New" />
-					<input type="radio" name="condition" value="Old" ><fmt:message key="condition_Old" /> 
-					<input type="radio" name="condition" value="Refurbished" ><fmt:message key="condition_Refurbished" />
+					<input type="text" id ="bookPrice" name="bookPrice" class="form-control" >
 				</div>
 			</div>
 			<div class ="form-group row">
-			<label class ="col-sm-2"><fmt:message key="productImage" /></label>
+			<label class ="col-sm-2"><fmt:message key="bookImage" /></label>
 				<div class ="col-sm-5">
- 					<input type="file" name="productImage" class="form-control">
+ 					<input type="file" name="bookImage" class="form-control">
  				</div>
  			</div>
 			<div class="form-group row">

@@ -5,6 +5,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+
 <%
 	String sessionId = (String) session.getAttribute("sessionId");
 %>

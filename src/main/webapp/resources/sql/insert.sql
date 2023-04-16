@@ -6,3 +6,5 @@ commit;
 
 select * from product;
 
+
+

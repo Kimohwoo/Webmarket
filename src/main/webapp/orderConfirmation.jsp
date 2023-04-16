@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.net.URLDecoder"%>
 <%@ page import="dto.Product"%>
@@ -23,17 +23,17 @@
 			Cookie thisCookie = cookies[i];
 			String n = thisCookie.getName();
 			if (n.equals("Shipping_cartId"))
-				shipping_cartId = URLDecoder.decode((thisCookie.getValue()), "utf-8");
+				shipping_cartId = URLDecoder.decode((thisCookie.getValue()), "UTF-8");
 			if (n.equals("Shipping_name"))
-				shipping_name = URLDecoder.decode((thisCookie.getValue()), "utf-8");
+				shipping_name = URLDecoder.decode((thisCookie.getValue()), "UTF-8");
 			if (n.equals("Shipping_shippingDate"))
-				shipping_shippingDate = URLDecoder.decode((thisCookie.getValue()), "utf-8");
+				shipping_shippingDate = URLDecoder.decode((thisCookie.getValue()), "UTF-8");
 			if (n.equals("Shipping_country"))
-				shipping_country = URLDecoder.decode((thisCookie.getValue()), "utf-8");
+				shipping_country = URLDecoder.decode((thisCookie.getValue()), "UTF-8");
 			if (n.equals("Shipping_zipCode"))
-				shipping_zipCode = URLDecoder.decode((thisCookie.getValue()), "utf-8");
+				shipping_zipCode = URLDecoder.decode((thisCookie.getValue()), "UTF-8");
 			if (n.equals("Shipping_addressName"))
-				shipping_addressName = URLDecoder.decode((thisCookie.getValue()), "utf-8");
+				shipping_addressName = URLDecoder.decode((thisCookie.getValue()), "UTF-8");
 		}
 	}
 %>

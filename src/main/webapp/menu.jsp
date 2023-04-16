@@ -1,24 +1,23 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String sessionId = (String) session.getAttribute("sessionId");
 %>
-<script src="./resources/js/jquery-3.2.1.min.js"></script>
+<script src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
 <script type="text/javascript">
 	$(function(){
-		
-		$('a#navbarDropdown').click(function(){
-			$('div.dropdown-menu').show();
+// 		$('#navbarDropdown').click(function(){
+// 			$('.dropdown-menu').show();
+// 		});
+// 		$('#navbarDropdown').click(function(){
+// 			$('dropdown-menu').hide();
+// 		});
+		$('#navbarDropdown').on('click',function(){
+			$('.dropdown-menu').toggle();
 		});
-		
-		$('div.dropdown-menu').mouseleave(function(){
+		$('.dropdown-menu').mouseleave(function(){
 			$(this).hide();
 		});
-		
-		$('li.list-group-item active').click(function(){
-			$('list-group-item active')
-		});
-		
 	});
 
 	let ajax1;
@@ -119,17 +118,21 @@
 <style>
 	nav > a:hover{
 		background: gray;
+		display: block;
 	}
 	nav > div > ul > li:hover > a{
 		color: red; 
 		background: gray;
+		display: block;
 	}
 	nav > div > ul > li > div > a:hover{
 		color: white; 
 		background: black;
+		display: block;
 	}
 	nav > div > ul > li > div.dropdown-menu{
 		background: gray;
+		display: block;
 	}
 </style>
 
@@ -150,36 +153,46 @@
 	        <a class="nav-link" href="<c:url value="/member/loginMember.jsp"/>">로그인</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link disabled" href="<c:out value="/member/addMember.jsp"/>">회원가입</a>
+	        <a class="nav-link disabled" href="<c:url value="/member/addMember.jsp"/>">회원가입</a>
 	      </li>
 	  	</c:when>
 	  	<c:otherwise>
 			<li class="nav-item">
-				<a class="nav-link disabled" href="<c:out value="/member/updateMember.jsp"/>">[<%=sessionId %>]님</a>
-			</li>
+				<a class="nav-link disabled" href="<c:url value="/member/updateMember.jsp"/>">[<%=sessionId %>]님</a>
+		    </li>
+		    <li>
+		    	<a class="nav-link disabled" href="<c:url value="/member/updateMember.jsp"/>">회원 수정</a>
+		    </li>
 			<li class="nav-item">
-				<a class="nav-link" href="<c:out value="/member/logoutMember.jsp"/>">로그아웃</a>
+				<a class="nav-link" href="<c:url value="/member/logoutMember.jsp"/>">로그아웃</a>
 			</li>
 	  	</c:otherwise>
       </c:choose>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          카테고리
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">이달의 상품</a>
-          <a class="dropdown-item" href="#">회원가입</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="<c:url value="/cart.jsp"/>">장바구니</a>
-        </div>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0" name = "searchForm" method="Post">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name = "context" onClick='javascript:selectData();'>
-		<div id="div_res">
-		
-		</div>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick='javascript:insertData();'>검색</button>
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    카테고리
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" href="#">이달의 상품</a>
+				<a class="dropdown-item" href="<c:url value="/products.jsp"/>">도서 목록</a>
+			<c:if test="${sessionId eq 'admin'}">
+				<a class="dropdown-item" href="<c:url value="/addProduct.jsp"/>">도서등록</a>
+				<a class="dropdown-item" href="<c:url value="/updateProduct.jsp"/>">도서수정</a>
+				<a class="dropdown-item" href="<c:url value="/deleteProduct.jsp"/>">도서삭제</a>
+			</c:if>
+			<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="<c:url value="/cart.jsp"/>">장바구니</a>
+				<a class="dropdown-item" href="<c:url value="#"/>">결제 내역</a>
+			</div>
+		</li>
+	</ul>
+    <form class="form-inline my-2 my-lg-0" name = "searchForm" action="<c:url value="/search_processProduct.jsp" />" method="Post">
+		<input class="form-control mr-sm-2" type="search" placeholder="도서 검색" aria-label="Search" name = "bname">
+<!-- 			<div id="div_res"> -->
+			
+<!-- 			</div> -->
+<!--       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick='javascript:insertData();'>검색</button> -->
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
     </form>
   </div>
 </nav>

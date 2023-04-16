@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%-- <%@ page import="java.util.ArrayList"%> --%>
 <%-- <%@ page import="dto.Product"%> --%>
 <%-- <%@ page import="dao.ProductRepository"%> --%>
@@ -30,7 +30,7 @@
 
 		<%@ include file="./db/dbconn.jsp"%>
 		<%
-			String sql = "select * from product";
+			String sql = "SELECT * FROM book";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -43,13 +43,14 @@
 <%-- 				<p><a href="./product.jsp?id=<%=product.getProductId()%>" class="btn btn-secondary" role="button"> 상세 정보 &raquo;</a> --%>
 <!-- 			</div> -->
 			<div class="col-md-3">
-				<img src="./upload2/<%=rs.getString("p_fileName")%>" style="width: 100%">
-				<h3><%=rs.getString("p_name")%></h3>
-				<p><%=rs.getString("p_description")%>
-				<p><%=rs.getString("p_UnitPrice")%>원
+				<img src="./upload2/<%=rs.getString("b_fileName")%>" style="width: 100%">
+				<h3><%=rs.getString("b_name")%></h3>
+				<p><%=rs.getString("b_description")%></p>
+				<p><%=rs.getString("b_price")%>원</p>
 				<p>
-					<a href="./product.jsp?id=<%=rs.getString("p_id")%>"
+					<a href="./product.jsp?id=<%=rs.getString("b_id")%>"
 						class="btn btn-secondary" role="button"> 상세 정보 &raquo;></a>
+				</p>
 			</div>
 			<%
 				}
