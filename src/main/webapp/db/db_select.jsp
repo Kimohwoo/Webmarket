@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.SQLException" %>
 <%@ page import = "java.util.ArrayList" %>
-<jsp:useBean id ="QueryBean" scope = "page" class="mvc.database.beans.QueryBean" />
+<jsp:useBean id ="QueryBean" scope = "page" class="db.beans.QueryBean" />
 <jsp:setProperty property = "*" name = "QueryBean" />
 <%
 
@@ -12,14 +12,14 @@
 	
 	response.setCharacterEncoding("UTF-8");
 	
-	String userId = (request.getParameter("user_id")==null) ? "" : request.getParameter("user_id").trim();
+	String memberId = (request.getParameter("user_id")==null) ? "" : request.getParameter("user_id").trim();
 	
 	QueryBean.getConnection();
 	
 	ArrayList resArr = new ArrayList();
 	
 	try{
-		resArr = QueryBean.selectSearchingData(userId);
+		resArr = QueryBean.selectMemberInfo(memberId);
 	} catch(SQLException e){
 		e.printStackTrace();
 	} finally{

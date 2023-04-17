@@ -12,7 +12,7 @@
 	<jsp:include page="menu.jsp"/>
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3" align="center">도서 목록</h1>
+			<h1 class="display-3" align="center">도서</h1>
 		</div>
 	</div>
 	<div class="container">

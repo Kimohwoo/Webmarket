@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String name = (String) request.getAttribute("name");
@@ -26,7 +26,7 @@
 	}
 </script>
 <body>
-	<jsp:include page="../menu.jsp" />
+	<jsp:include page="<c:url value="/menu.jsp"/>"/>
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">게시판</h1>

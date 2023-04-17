@@ -9,89 +9,81 @@
 	<jsp:include page="menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">상품 수정</h1>
+			<h1 class="display-3">도서 수정</h1>
 		</div>
 	</div>
 	<%@ include file="./db/dbconn.jsp"%>
 	<%
-		String productId = request.getParameter("id");
+		String bId = request.getParameter("id");
 
-		String sql = "select * from product where p_id = ?";
+		String sql = "SELECT * FROM book WHERE b_id = ?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, productId);
+		pstmt.setString(1, bId);
 		rs = pstmt.executeQuery();
 		if (rs.next()) {
 	%>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5">
-				<img src="./upload2/<%=rs.getString("p_filename")%>" alt="image"
+				<img src="./upload2/<%=rs.getString("b_filename")%>" alt="image"
 					style="width: 100%" />
 			</div>
 			<div class="col-md-7">
 				<form name="newProduct" action="./processUpdateProduct.jsp"
 					class="form-horizontal" method="post" enctype="multipart/form-data">
 					<div class="form-group row">
-						<label class="col-sm-2">상품 코드</label>
+						<label class="col-sm-2">도서 코드</label>
 						<div class="col-sm-3">
-							<input type="text" id="productId" name="productId"
-								class="form-control" value='<%=rs.getString("p_id")%>'>
+							<input type="text" id="bookId" name="bookId"
+								class="form-control" value='<%=rs.getString("b_id")%>'>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-2">상품명</label>
+						<label class="col-sm-2">도서명</label>
 						<div class="col-sm-3">
-							<input type="text" id="name" name="name" class="form-control"
-								value="<%=rs.getString("p_name")%>">
+							<input type="text" id="bname" name="bname" class="form-control"
+								value="<%=rs.getString("b_name")%>">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-2">가격</label>
+						<label class="col-sm-2">저자</label>
 						<div class="col-sm-3">
-							<input type="text" id="unitPrice" name="unitPrice"
-								class="form-control" value="<%=rs.getInt("p_unitPrice")%>">
+							<input type="text" id="author" name="author"
+								class="form-control" value="<%=rs.getString("b_author")%>">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-2">상세 설명</label>
+						<label class="col-sm-2">출판사</label>
+						<div class="col-sm-3">
+							<input type="text" id="publisher" name="publisher"
+								class="form-control" value="<%=rs.getString("b_publisher") %>">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2">출판일</label>
+						<div class="col-sm-5">
+							<input type="text" id="publisher_date" name="publisher_date"
+								class="form-control" value="<%=rs.getString("b_reg") %>">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2">상세설명</label>
 						<div class="col-sm-5">
 							<textarea name="description" cols="50" rows="2"
-								class="form-control"><%=rs.getString("p_description")%></textarea>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-2">제조사</label>
-						<div class="col-sm-3">
-							<input type="text" name="manufacturer" class="form-control"
-								value="<%=rs.getString("p_manufacturer")%>">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-2">분류</label>
-						<div class="col-sm-3">
-							<input type="text" name="category" class="form-control"
-								value="<%=rs.getString("p_category")%>">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-2">제고 수</label>
-						<div class="col-sm-3">
-							<input type="text" id="unitsInStock" name="unitsInStock"
-								class="form-control" value="<%=rs.getLong("p_unitsInStock") %>">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-2">상태</label>
-						<div class="col-sm-5">
-							<input type="radio" name="condition" value="New "> 신규 제품 <input
-								type="radio" name="condition" value="Old"> 중고 제품 <input
-								type="radio" name="condition" value="Refurbished"> 재생 제품
+								class="form-control"><%=rs.getString("b_description")%></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-2">이미지</label>
 						<div class="col-sm-5">
-							<input type="file" name="productImage" class="form-control">
+							<input type="file" name="bookImage" class="form-control">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2">도서 가격</label>
+						<div class="col-sm-3">
+							<input type="text" id ="bookPrice" name="bookPrice" 
+							class="form-control" value="<%=rs.getInt("b_price")%>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -100,7 +92,6 @@
 						</div>
 					</div>
 				</form>
-
 			</div>
 		</div>
 	</div>

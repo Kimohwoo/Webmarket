@@ -15,7 +15,7 @@
 
 
 <sql:query dataSource="${dataSource}" var="resultSet">
-   SELECT * FROM MEMBER2 WHERE ID=?
+   SELECT * FROM MEMBER WHERE ID=?
    <sql:param value="<%=sessionId%>" />
 </sql:query>
 

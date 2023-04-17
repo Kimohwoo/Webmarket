@@ -1,7 +1,10 @@
-INSERT INTO product VALUES('P1234', 'iPhone 6s', 800000, '1334X750 Renina HD display, 8-megapixel iSight Camera','Smart Phone', 'Apple', 1000, 'new', 'P1234.png');
-INSERT INTO product VALUES('P1235', 'LG PC gram', 1500000, '3.3-inch,IPS LED display, 5rd Generation Intel Core processors', 'Notebook', 'LG', 1000, 'new', 'P1235.png');
-INSERT INTO product VALUES('P1236', 'Galaxy Tab S', 900000, '3.3-inch, 212.8*125.6*6.6mm,  Super AMOLED display, Octa-Core processor', 'Tablet', 'Samsung', 1000, 'new', 'P1236.png');
-
+INSERT INTO book
+    VALUES('P0001', '진짜 챗GPT 활용법', '김준성, 유원준, 안상준', '위키북스', '2023/03/21', '16200', 'P0001.png', '엑셀 활용법부터 블로그 자동화, 유튜브 콘텐츠 생성, 미드저니와 ChatGPT API 사용법까지');
+INSERT INTO book
+    VALUES('P0002', '진짜 쓰는 실무 엑셀', '전진권', '제이펍', '2023/03/15', '18900', 'P0002.png', '유튜브 대표 엑셀 채널, 오빠두가 알려 주는 엑셀 함수, 보고서 작성, 데이터 분석 노하우!');    
+INSERT INTO book
+    VALUES('P0003', '챗GPT와 업무자동화', '김철수', '위키북스', '2023/03/21', '16200', 'P0003.png', '1분 만에 끝내는 엑셀, 구글 시트, 파워포인트, 파이썬 자동화 with ChatGPT');
+    
 commit;
 
 select * from product;

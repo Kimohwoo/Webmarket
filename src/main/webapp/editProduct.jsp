@@ -29,25 +29,25 @@
 		<div class="row" align="center">
 			<%@ include file="./db/dbconn.jsp"%>
 			<%
-				String sql = "select * from product";
+				String sql = "SELECT * FROM book";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
 			%>
 			<div class="col-md-4">
-				<img src="./upload2/<%=rs.getString("p_fileName")%>" style="width: 100%">
-				<h3><%=rs.getString("p_name")%></h3>
-				<p><%=rs.getString("p_description")%>
-				<p><%=rs.getString("p_UnitPrice")%>원
+				<img src="./upload2/<%=rs.getString("b_fileName")%>" style="width: 50%">
+				<h3><%=rs.getString("b_name")%></h3>
+				<p><%=rs.getString("b_description")%>
+				<p><%=rs.getString("b_price")%>원
 				<p>
 					<%
 						if (edit.equals("update")) {
 					%>
-					<a href="./updateProduct.jsp?id=<%=rs.getString("p_id")%>"	class="btn btn-success" role="button"> 수정 &raquo;></a>
+					<a href="./updateProduct.jsp?id=<%=rs.getString("b_id")%>"	class="btn btn-success" role="button"> 수정 &raquo;></a>
 					<%
 						} else if (edit.equals("delete")) {
 					%>
-					<a href="#" onclick="deleteConfirm('<%=rs.getString("p_id")%>')" class="btn btn-danger" role="button">삭제 &raquo;></a>
+					<a href="#" onclick="deleteConfirm('<%=rs.getString("b_id")%>')" class="btn btn-danger" role="button">삭제 &raquo;></a>
 					<%
 						}
 					%>				

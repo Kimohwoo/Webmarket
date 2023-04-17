@@ -3,15 +3,17 @@
 <%
 	String sessionId = (String) session.getAttribute("sessionId");
 %>
+
+<script src="<c:url value="/resources/js/popper.min.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+	window.jQuery || document.write('<script src="<c:url value="/resources/js/jquery-slim.min.js"/>"><\/script>')
 <script src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
 <script type="text/javascript">
 	$(function(){
-// 		$('#navbarDropdown').click(function(){
-// 			$('.dropdown-menu').show();
-// 		});
-// 		$('#navbarDropdown').click(function(){
-// 			$('dropdown-menu').hide();
-// 		});
+		$('.dropdown-menu').hide();
 		$('#navbarDropdown').on('click',function(){
 			$('.dropdown-menu').toggle();
 		});
@@ -26,7 +28,7 @@
 		let form_name = "searchForm";
 		let user_id = <%=sessionId%>;
 		
-		let url = "./db_select.jsp";
+		let url = "./db/db_select.jsp";
 		
 		let reqparam = "user_id=" + user_id;
 		ajax1.onreadystatechange = resSelectData;
@@ -68,50 +70,50 @@
 		}
 	}
 	
-	function insertData(){
-		let form_name = 'searchForm';
+// 	function insertData(){
+// 		let form_name = 'searchForm';
 		
-		let user_id = <%=sessionId%>;
-		let context = document.forms[form_name].elements['context'].value;
+<%-- 		let user_id = <%=sessionId%>; --%>
+// 		let context = document.forms[form_name].elements['context'].value;
 		
-		ajax1 = new XMLHttpRequest();
+// 		ajax1 = new XMLHttpRequest();
 		
-		let url = "./db_insert.jsp";
+// 		let url = "./db_insert.jsp";
 		
-		let reqparam = "user_id=" + user_id;
-			reqparam += "&context=" + context;
+// 		let reqparam = "user_id=" + user_id;
+// 			reqparam += "&context=" + context;
 			
-		ajax1.onreadystatechange = resInsertData;
-		ajax1.open("Post", url, "true");
-		ajax1.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
-		ajax1.send(reqparam);
-	}
+// 		ajax1.onreadystatechange = resInsertData;
+// 		ajax1.open("Post", url, "true");
+// 		ajax1.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+// 		ajax1.send(reqparam);
+// 	}
 	
-	function resInsertData(){
-		if(ajax1 == 4){
-			if(ajax1.status == 200){
+// 	function resInsertData(){
+// 		if(ajax1 == 4){
+// 			if(ajax1.status == 200){
 				
-				let result = ajax1.responseText;
-				let objRes = eval("("+result+")");
-				let resDiv = document.getElementById('div_res');
-				let res = "";
+// 				let result = ajax1.responseText;
+// 				let objRes = eval("("+result+")");
+// 				let resDiv = document.getElementById('div_res');
+// 				let res = "";
 				
-				let success = objRes.SUCCESS;
+// 				let success = objRes.SUCCESS;
 				
-				if(success == "1"){
-					alert("입력 성공");
-					res = "<p>입력 성공</p>";
-				}
-				if(success == "0"){
-					alert("입력 실패")	;
-					res = "<p>입력 실패</p>";
-				}
+// 				if(success == "1"){
+// 					alert("입력 성공");
+// 					res = "<p>입력 성공</p>";
+// 				}
+// 				if(success == "0"){
+// 					alert("입력 실패")	;
+// 					res = "<p>입력 실패</p>";
+// 				}
 				
-				resDiv.innerHTML = res;
-				selectData();	
-			}
-		}
-	}
+// 				resDiv.innerHTML = res;
+// 				selectData();	
+// 			}
+// 		}
+// 	}
 
 	
 </script>
@@ -161,7 +163,14 @@
 				<a class="nav-link disabled" href="<c:url value="/member/updateMember.jsp"/>">[<%=sessionId %>]님</a>
 		    </li>
 		    <li>
-		    	<a class="nav-link disabled" href="<c:url value="/member/updateMember.jsp"/>">회원 수정</a>
+		    	<c:choose>
+	    			<c:when test="${sessionId eq 'admin'}">
+		    			<a class="nav-link disabled" href="<c:url value="/memberUpdate.jsp"/>">회원 관리</a>
+	    			</c:when>
+	    			<c:otherwise>
+	    				<a class="nav-link disabled" href="<c:url value="/member/updateMember.jsp"/>">회원 수정</a>
+	    			</c:otherwise>
+    			</c:choose>
 		    </li>
 			<li class="nav-item">
 				<a class="nav-link" href="<c:url value="/member/logoutMember.jsp"/>">로그아웃</a>
@@ -175,24 +184,26 @@
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="#">이달의 상품</a>
 				<a class="dropdown-item" href="<c:url value="/products.jsp"/>">도서 목록</a>
-			<c:if test="${sessionId eq 'admin'}">
+				<c:if test="${sessionId eq 'admin'}">
 				<a class="dropdown-item" href="<c:url value="/addProduct.jsp"/>">도서등록</a>
-				<a class="dropdown-item" href="<c:url value="/updateProduct.jsp"/>">도서수정</a>
-				<a class="dropdown-item" href="<c:url value="/deleteProduct.jsp"/>">도서삭제</a>
-			</c:if>
-			<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="<c:url value="/editProduct.jsp?edit=update"/>">도서수정</a>
+				<a class="dropdown-item" href="<c:url value="/editProduct.jsp?edit=delete"/>">도서삭제</a>
+				</c:if>
+				<a class="dropdown-item" href="<c:url value="BoardListAction.do"/>">게시판</a>
+				
+				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="<c:url value="/cart.jsp"/>">장바구니</a>
-				<a class="dropdown-item" href="<c:url value="#"/>">결제 내역</a>
+				<a class="dropdown-item" href="<c:url value=""/>">결제 내역</a>
 			</div>
 		</li>
 	</ul>
     <form class="form-inline my-2 my-lg-0" name = "searchForm" action="<c:url value="/search_processProduct.jsp" />" method="Post">
-		<input class="form-control mr-sm-2" type="search" placeholder="도서 검색" aria-label="Search" name = "bname">
-<!-- 			<div id="div_res"> -->
+		<input class="form-control mr-sm-2" type="search" placeholder="도서 검색" aria-label="Search" name = "bname" onclick='javascript:selectData();'>
+			<div id="div_res">
 			
-<!-- 			</div> -->
-<!--       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick='javascript:insertData();'>검색</button> -->
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+			</div>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick='javascript:insertData();'>검색</button>
+<!-- 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button> -->
     </form>
   </div>
 </nav>

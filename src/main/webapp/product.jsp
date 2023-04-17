@@ -1,5 +1,4 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page errorPage ="exceptionNoProductId.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
@@ -20,12 +19,14 @@
 	<jsp:include page="menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">상품 정보</h1>
+			<h1 class="display-3">도서 정보</h1>
 		</div>
 	</div>
 
 	<%@ include file="./db/dbconn.jsp"%>
 	<%
+		String sessionId = (String)session.getAttribute("sessionId");	
+	
 		String bid = request.getParameter("id");
 
 		String sql = " SELECT * FROM book WHERE b_id = ?";
@@ -41,42 +42,42 @@
 	<div class="container">
 		<div class="row">
 			<div class ="col-md-5">
-				<img src="./upload2/<%=rs.getString("b_filename")%>" style="width: 100%" />
+				<img src="./upload2/<%=rs.getString("b_filename")%>" style="width: 50%" />
 			</div>
 			<div class="col-md-6">
-<%-- 				<h3><%=product.getPname()%></h3> --%>
-<%-- 				<p><%=product.getDescription()%> --%>
-<%-- 				<p><b>상품 코드 : </b><span class="badge badge-danger"> <%=product.getProductId()%></span> --%>
-<%-- 				<p><b>제조사</b> : <%=product.getManufacturer()%> --%>
-<%-- 				<p><b>분류</b> : <%=product.getCategory()%> --%>
-<%-- 				<p><b>재고 수</b> : <%=product.getUnitsInStock()%> --%>
-<%-- 				<h4><%=product.getUnitPrice()%>원</h4> --%>
-<%-- 				<p><form name="addForm" action="./addCart.jsp?id=<%=product.getProductId()%>" method="post"> --%>
 
 				<h3><%=rs.getString("b_name")%></h3>
 				<p><%=rs.getString("b_description")%></p>
 				<p><b>도서 코드 : </b><span class="badge badge-danger"> <%=rs.getString("b_id")%></span>
 				<p><b>저 자 : </b><%=rs.getString("b_author")%>
-				<p><b>출 판 사 : </b><%=rs.getString("b_publisher") %> &rarr; <%=rs.getString("b_publisher_date") %>
+				<p><b>출 판 사 : </b><%=rs.getString("b_publisher") %> &rarr; <%=rs.getString("b_reg") %>
 				<p><b>가 격 : </b><%=rs.getString("b_price") %>원</p>
 				<p>
-				<form name="addForm" action="./addCart.jsp?id=<%=rs.getString("b_id")%>" method="post">
-					<a href="#" class="btn btn-info" onclick="addToCart()"> 상품 주문 &raquo;</a> 
-					<a href="./cart.jsp" class="btn btn-warning"> 장바구니 &raquo;</a>
-					<a href="./products.jsp" class="btn btn-secondary"> 상품 목록 &raquo;</a>
-				</form>
+				<c:choose>
+					<c:when test="${sessionId eq 'admin'}">
+						<form name="addForm" action="./addCart.jsp?id=<%=rs.getString("b_id")%>" method="post">
+							<a href="./updateProduct.jsp?id=<%=rs.getString("b_id")%>" class="btn btn-danger">상품 수정 &raquo;</a>
+							<a href="./products.jsp" class="btn btn-secondary"> 상품 목록 &raquo;</a>
+						</c:when>
+						<c:otherwise>
+							<a href="./cart.jsp" class="btn btn-warning"> 장바구니 &raquo;</a>
+							<a href="#" class="btn btn-info" onclick="addToCart()"> 상품 주문 &raquo;</a> 
+							<a href="./products.jsp" class="btn btn-secondary"> 상품 목록 &raquo;</a>
+						</form>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<hr>
 	</div>
-		<%
-		}
-		if (rs != null)
-			rs.close();
-		if (pstmt != null)
-			pstmt.close();
-		if (conn != null)
-		conn.close();
+	 	<%
+			}
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+			conn.close();
 		%>
 	<jsp:include page="footer.jsp" />
 </body>
