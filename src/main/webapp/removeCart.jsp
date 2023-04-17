@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Product"%>
-<%@ page import="dao.ProductRepository"%>
+<%@ page import="mvc.model.BookDTO" %>
 
 <%
 	String id = request.getParameter("id");
@@ -10,18 +9,17 @@
 		return;
 	}
 
-	ProductRepository dao = ProductRepository.getInstance();
+	BookDTO book = new BookDTO();
 	
-	Product product = dao.getProductById(id);
-	if (product == null) {
+	if (book == null) {
 		response.sendRedirect("exceptionNoProductId.jsp");
 	}
 
-	ArrayList<Product> cartList = (ArrayList<Product>) session.getAttribute("cartlist");
-	Product goodsQnt = new Product();
+	ArrayList<BookDTO> cartList = (ArrayList<BookDTO>) session.getAttribute("cartlist");
+	BookDTO goodsQnt = new BookDTO();
 	for (int i = 0; i < cartList.size(); i++) { // 상품리스트 하나씩 출력하기
 		goodsQnt = cartList.get(i);
-		if (goodsQnt.getProductId().equals(id)) {
+		if (goodsQnt.getId().equals(id)) {
 			cartList.remove(goodsQnt);
 		}
 	}

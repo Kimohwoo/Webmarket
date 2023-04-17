@@ -26,7 +26,7 @@
 	}
 </script>
 <body>
-	<jsp:include page="<c:url value="/menu.jsp"/>"/>
+	<jsp:include page="../menu.jsp"/>
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">게시판</h1>

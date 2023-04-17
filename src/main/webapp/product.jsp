@@ -53,19 +53,19 @@
 				<p><b>출 판 사 : </b><%=rs.getString("b_publisher") %> &rarr; <%=rs.getString("b_reg") %>
 				<p><b>가 격 : </b><%=rs.getString("b_price") %>원</p>
 				<p>
-				<c:choose>
-					<c:when test="${sessionId eq 'admin'}">
-						<form name="addForm" action="./addCart.jsp?id=<%=rs.getString("b_id")%>" method="post">
-							<a href="./updateProduct.jsp?id=<%=rs.getString("b_id")%>" class="btn btn-danger">상품 수정 &raquo;</a>
-							<a href="./products.jsp" class="btn btn-secondary"> 상품 목록 &raquo;</a>
-						</c:when>
-						<c:otherwise>
-							<a href="./cart.jsp" class="btn btn-warning"> 장바구니 &raquo;</a>
-							<a href="#" class="btn btn-info" onclick="addToCart()"> 상품 주문 &raquo;</a> 
-							<a href="./products.jsp" class="btn btn-secondary"> 상품 목록 &raquo;</a>
-						</form>
-					</c:otherwise>
-				</c:choose>
+					<form name="addForm" action="./addCart.jsp?id=<%=rs.getString("b_id")%>" method="post">
+						<c:choose>
+							<c:when test="${sessionId eq 'admin'}">
+								<a href="./updateProduct.jsp?id=<%=rs.getString("b_id")%>" class="btn btn-danger">상품 수정 &raquo;</a>
+								<a href="./products.jsp" class="btn btn-secondary"> 상품 목록 &raquo;</a>
+							</c:when>
+							<c:otherwise>
+								<a href="./cart.jsp" class="btn btn-warning"> 장바구니 &raquo;</a>
+								<a href="#" class="btn btn-info" onclick="addToCart()"> 상품 주문 &raquo;</a> 
+								<a href="./products.jsp" class="btn btn-secondary"> 상품 목록 &raquo;</a>
+							</c:otherwise>
+						</c:choose>
+					</form>
 			</div>
 		</div>
 		<hr>

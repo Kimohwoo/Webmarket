@@ -4,10 +4,10 @@
 	String sessionId = (String) session.getAttribute("sessionId");
 %>
 
-<script src="<c:url value="/resources/js/popper.min.js"/>"></script>
 <script src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
-<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<%-- <script src="<c:url value="/resources/js/popper.min.js"/>"></script> --%>
+<%-- <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script> --%>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
 <script>
 	window.jQuery || document.write('<script src="<c:url value="/resources/js/jquery-slim.min.js"/>"><\/script>')
 <script src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
@@ -189,7 +189,7 @@
 				<a class="dropdown-item" href="<c:url value="/editProduct.jsp?edit=update"/>">도서수정</a>
 				<a class="dropdown-item" href="<c:url value="/editProduct.jsp?edit=delete"/>">도서삭제</a>
 				</c:if>
-				<a class="dropdown-item" href="<c:url value="BoardListAction.do"/>">게시판</a>
+				<a class="dropdown-item" href="<c:url value="/BoardListAction.do"/>">게시판</a>
 				
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="<c:url value="/cart.jsp"/>">장바구니</a>

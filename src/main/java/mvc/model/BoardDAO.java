@@ -31,9 +31,9 @@ public class BoardDAO {
 		String sql;
 		
 		if (items == null && text == null)
-			sql = "select  count(*) from board";
+			sql = "SELECT  count(*) FROM board";
 		else
-			sql = "SELECT   count(*) FROM board where " + items + " like '%" + text + "%'";
+			sql = "SELECT   count(*) FROM board WHERE " + items + " LIKE '%" + text + "%'";
 		
 		try {
 			conn = DBConnection.getConnection();
@@ -72,9 +72,9 @@ public class BoardDAO {
 		String sql;
 
 		if (items == null && text == null)
-			sql = "select * from board ORDER BY num DESC";
+			sql = "SELECT * FROM board ORDER BY num DESC";
 		else
-			sql = "SELECT  * FROM board where " + items + " like '%" + text + "%' ORDER BY num DESC ";
+			sql = "SELECT  * FROM board where " + items + " LIKE '%" + text + "%' ORDER BY num DESC ";
 
 		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
 
@@ -125,7 +125,7 @@ public class BoardDAO {
 		ResultSet rs = null;	
 
 		String name=null;
-		String sql = "select * from member where id = ? ";
+		String sql = "SELECT * FROM member WHERE id = ? ";
 
 		try {
 			conn = DBConnection.getConnection();
@@ -164,7 +164,7 @@ public class BoardDAO {
 		try {
 			conn = DBConnection.getConnection();		
 
-			String sql = "insert into board values(num_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO board VALUES(num_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 			pstmt = conn.prepareStatement(sql);
 			
@@ -177,6 +177,7 @@ public class BoardDAO {
 			pstmt.setString(index++, board.getRegist_day());
 			pstmt.setInt(index++, board.getHit());
 			pstmt.setString(index++, board.getIp());
+			pstmt.setString(index++, board.getBookId());
 
 			pstmt.executeUpdate();
 		} catch (Exception ex) {

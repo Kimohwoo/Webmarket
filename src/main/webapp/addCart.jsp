@@ -1,66 +1,43 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Product"%>
-<%-- <%@ page import="dao.ProductRepository"%> --%>
+<%@ page import="mvc.model.BookDTO" %>
 <%@ include file="./db/dbconn.jsp"%>
 <%
 	String id = request.getParameter("id");
-
-// 	if (id == null || id.trim().equals("")) {
-// 		response.sendRedirect("products.jsp");
-// 		return;
-// 	}
-
-// 	ProductRepository dao = ProductRepository.getInstance();
-
-// 	Product product = dao.getProductById(id);
-// 	if (product == null) {
-// 		response.sendRedirect("exceptionNoProductId.jsp");
-// 	}
-
-	Product goods = new Product();
 	
-	String sql = "select * from product where p_id = ?";
+	String sql = "SELECT * FROM book WHERE b_id = ?";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, id);
 	rs = pstmt.executeQuery();
+	
+	BookDTO goods = new BookDTO();
+	
 	if (rs.next()) {
 		
-		goods.setProductId(rs.getString("p_id"));
-		goods.setPname(rs.getString("p_name"));
-		goods.setUnitPrice(rs.getInt("p_unitprice"));
-		goods.setDescription(rs.getString("p_description"));
-		goods.setCategory(rs.getString("p_category"));
-		goods.setManufacturer(rs.getString("p_manufacturer"));
-		goods.setUnitsInStock(rs.getLong("p_unitsInStock"));
-		goods.setCondition(rs.getString("p_condition"));
-		goods.setFilename(rs.getString("p_filename"));
+		goods.setId("b_id");
+		goods.setName(rs.getString("b_name"));
+		goods.setAuthor(rs.getString("b_author"));
+		goods.setPublisher(rs.getString("b_publisher"));
+		goods.setReg(rs.getString("b_reg"));
+		goods.setPrice(rs.getInt("b_price"));
+		goods.setDescription(rs.getString("b_description"));
+		goods.setFileName(rs.getString("b_filename"));
 		
 		
 	} else
 		out.println("일치하는 상품이 없습니다");
 	
-
-// 	ArrayList<Product> goodsList = dao.getAllProducts();
-// 	Product goods = new Product();
-// 	for (int i = 0; i < goodsList.size(); i++) {
-// 		goods = goodsList.get(i);
-// 		if (goods.getProductId().equals(id)) { 			
-// 			break;
-// 		}
-// 	}
-	
-	ArrayList<Product> list = (ArrayList<Product>) session.getAttribute("cartlist");
+	ArrayList<BookDTO> list = (ArrayList<BookDTO>) session.getAttribute("cartlist");
 	if (list == null) { 
-		list = new ArrayList<Product>();
+		list = new ArrayList<BookDTO>();
 		session.setAttribute("cartlist", list);
 	}
 
 	int cnt = 0;
-	Product goodsQnt = new Product();
+	BookDTO goodsQnt = new BookDTO();
 	for (int i = 0; i < list.size(); i++) {
 		goodsQnt = list.get(i);
-		if (goodsQnt.getProductId().equals(id)) {
+		if (goodsQnt.getId().equals(id)) {
 			cnt++;
 			int orderQuantity = goodsQnt.getQuantity() + 1;
 			goodsQnt.setQuantity(orderQuantity);

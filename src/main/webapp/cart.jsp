@@ -2,6 +2,8 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.Product"%>
 <%@ page import="dao.ProductRepository"%>
+<%@ page import="mvc.model.BookDTO" %>
+<%@ include file="./db/dbconn.jsp"%>
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
@@ -37,21 +39,21 @@
 				</tr>
 				<%				
 					int sum = 0;
-					ArrayList<Product> cartList = (ArrayList<Product>) session.getAttribute("cartlist");
+					ArrayList<BookDTO> cartList = (ArrayList<BookDTO>) session.getAttribute("cartlist");
 					if (cartList == null)
-						cartList = new ArrayList<Product>();
+						cartList = new ArrayList<BookDTO>();
 
 					for (int i = 0; i < cartList.size(); i++) { // 상품리스트 하나씩 출력하기
-						Product product = cartList.get(i);
-						int total = product.getUnitPrice() * product.getQuantity();
+						BookDTO book = cartList.get(i);
+						int total = book.getPrice() * book.getQuantity();
 						sum = sum + total;
 				%>
 				<tr>
-					<td><%=product.getProductId()%> - <%=product.getPname()%></td>
-					<td><%=product.getUnitPrice()%></td>
-					<td><%=product.getQuantity()%></td>
+					<td><%=book.getId()%> - <%=book.getName()%></td>
+					<td><%=book.getPrice()%></td>
+					<td><%=book.getQuantity()%></td>
 					<td><%=total%></td>
-					<td><a href="./removeCart.jsp?id=<%=product.getProductId()%>" class="badge badge-danger">삭제</a></td>
+					<td><a href="./removeCart.jsp?id=<%=book.getId()%>" class="badge badge-danger">삭제</a></td>
 				</tr>
 				<%
 					}

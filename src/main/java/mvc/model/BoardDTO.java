@@ -9,6 +9,7 @@ public class BoardDTO {
 	private String regist_day;
 	private int hit;
 	private String ip;
+	private String bookId;
 
 	public BoardDTO() {
 		super();		
@@ -78,4 +79,13 @@ public class BoardDTO {
 		this.ip = ip;
 	}
 
+	public String getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
+	}
+
+	
 }

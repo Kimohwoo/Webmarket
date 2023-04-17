@@ -27,8 +27,8 @@ public class BoardController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
 		
-		response.setContentType("text/html; charset=utf-8");
-		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 	
 		if (command.equals("/BoardListAction.do")) {//등록된 글 목록 페이지 출력하기
 			requestBoardList(request);
