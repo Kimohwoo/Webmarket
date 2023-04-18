@@ -9,7 +9,7 @@ public class DBConnection {
 		
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection conn 
-			= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "madang", "madang");
+			= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "webmarket", "webmarket1234");
 		return conn;
 		
 	}

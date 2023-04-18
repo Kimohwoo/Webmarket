@@ -30,22 +30,34 @@
 	out.println("\"datas\":[");
 	
 	if(resArr.size() == 0){
-		out.println("}");
+		out.println("]");
 		out.println("}");
 	} else {
 		
 		out.println("{");
 		out.println("\"id\":\"" + (String)resArr.get(0) + "\", ");
-		out.println("\"context\":\"" + (String)resArr.get(1) + "\", ");
-		out.println("\"regdate\":\"" + (String)resArr.get(2) + "\" ");
+		out.println("\"password\":\"" + (String)resArr.get(1) + "\", ");
+		out.println("\"name\":\"" + (String)resArr.get(2) + "\", ");
+		out.println("\"gender\":\"" + (String)resArr.get(3) + "\", ");
+		out.println("\"birth\":\"" + (String)resArr.get(4) + "\", ");
+		out.println("\"mail\":\"" + (String)resArr.get(5) + "\", ");
+		out.println("\"phone\":\"" + (String)resArr.get(6) + "\", ");
+		out.println("\"address\":\"" + (String)resArr.get(7) + "\", ");
+		out.println("\"regist_day\":\"" + (String)resArr.get(8) + "\" ");
 		out.println("}");
 		
-		for(int i = 3; i < resArr.size(); i+= 3){
+		for(int i = 9; i < resArr.size(); i+= 9){
 			out.println(",");
 			out.println("{");
 			out.println("\"id\":\"" + (String)resArr.get(i) + "\", ");
-			out.println("\"context\":\"" + (String)resArr.get(i + 1) + "\", ");
-			out.println("\"regdate\":\"" + (String)resArr.get(i + 2) + "\" ");
+			out.println("\"password\":\"" + (String)resArr.get(i + 1) + "\", ");
+			out.println("\"name\":\"" + (String)resArr.get(i + 2) + "\", ");
+			out.println("\"gender\":\"" + (String)resArr.get(i + 3) + "\", ");
+			out.println("\"birth\":\"" + (String)resArr.get(i + 4) + "\", ");
+			out.println("\"mail\":\"" + (String)resArr.get(i + 5) + "\", ");
+			out.println("\"phone\":\"" + (String)resArr.get(i + 6) + "\", ");
+			out.println("\"address\":\"" + (String)resArr.get(i + 7) + "\", ");
+			out.println("\"regist_day\":\"" + (String)resArr.get(i + 8) + "\" ");
 			out.println("}");
 			
 		}

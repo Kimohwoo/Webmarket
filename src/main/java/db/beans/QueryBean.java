@@ -1,6 +1,7 @@
 package db.beans;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -75,14 +76,14 @@ public class QueryBean
 
 		StringBuffer sb = new StringBuffer();
 
-		sb.append("SELECT");
+		sb.append(" SELECT ");
 		sb.append(" id, password, name, gender, birth, mail, phone, address, regist_day ");
 		sb.append(" FROM ");
 		sb.append(" member ");
 		sb.append(" WHERE ");
 		sb.append(" id LIKE '%"+memberId+"%' ");
 		sb.append(" ORDER BY");
-		sb.append("     WRITE_TIME");
+		sb.append(" regist_day ");
 		
 		System.out.println("쿼리 확인용 : " + sb.toString());
 		

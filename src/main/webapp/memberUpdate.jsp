@@ -11,15 +11,15 @@
 	
 	<form name="form_main" onSubmit="javascript:return false;">
 		<div class="container">
-<!-- 		    <div class="row"> -->
-<!-- 		        <div class="col-xs-12"> </div> -->
-<!-- 		    </div> -->
+		    <div class="row">
+		        <div class="col-xs-12"> </div>
+		    </div>
 <!-- 		    <div class="row"> -->
 <!-- 		        <div class="col-xs-12"> -->
 <!-- 			    	<input type="text" name='user_id' value="aa1" class="form-control" id="inputDefault"> -->
 <!-- 			    	<input type="text" name='user_name' value="홍길동" class="form-control" id="inputDefault"> -->
 <!-- 			    	<input type="text" name='user_phone' value="010-1234-4546" class="form-control" id="inputDefault"> -->
-<!-- <!-- 			    <input type="text" name='user_grade' value="3" class="form-control" id="inputDefault"> -->
+<!-- 				    <input type="text" name='user_grade' value="3" class="form-control" id="inputDefault"> -->
 <!-- 			    	<button class="btn btn-primary" type="button" id="button-addon2" onClick='javascript:insertData();' >입력</button> -->
 <!-- 			    	<button class="btn btn-primary" type="button" id="button-addon2" onClick='javascript:updateData();' >수정</button> -->
 <!-- 		        </div> -->
@@ -27,7 +27,7 @@
 		    <div class="row">	        
 		        <div class="col-sm-6">   
 		        	<div class="input-group mb-3">
-			      		<input type="text" name='txt_user_id' class="form-control" placeholder="ID 입력바람!" value='' aria-label="Recipient's username" aria-describedby="button-addon2" onkeyup='javascript:;'>
+			      		<input type="text" name='txt_user_id' class="form-control" placeholder="ID 입력바람!" aria-label="Recipient's username" aria-describedby="button-addon2" onkeyup='javascript:;'>
 			      		<button class="btn btn-primary" type="button" id="button-addon2"  onClick='javascript:selectData();' >Button</button>
 			    	</div>
 			    	<div id='div_res' class="input-group mb-3" >
@@ -57,6 +57,7 @@ function selectData()//json 요청
 	var url = "./db/db_select.jsp"; //요청 url 설정
 	
 	var reqparam = "user_id="+user_id;
+	
 	ajax1.onreadystatechange = resSelectData; // 다되면 실행할 함수 등록(호출 아님. 역호출)
 	ajax1.open("Post", url, "true"); //서버의 요청설정 -url변수에 설정된 리소스를 요청할 준비
 	ajax1.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
@@ -87,10 +88,10 @@ function resSelectData()
 				for(var i=0; i<num; i++)
 				{
 					var user_id = objRes.datas[i].ID;
-					var user_name = objRes.datas[i].NAME;
-					var user_phone = objRes.datas[i].PHONE;
-					var user_grade = objRes.datas[i].GRADE;
-					var user_time = objRes.datas[i].WRITE_TIME;
+					var user_name = objRes.datas[i].PASSWORD;
+					var user_phone = objRes.datas[i].NAME;
+					var user_gender = objRes.datas[i].GENDER;
+					var user_time = objRes.datas[i].REGIST_DAY;
 					
 					res +="<tr class='table-active'>";
 					res +="<td >"+user_id+"</td>";
@@ -98,7 +99,7 @@ function resSelectData()
 					res +="<td><br>"+user_phone+"<br></td>";
 //					res +="<td><br>"+"<button type='button' class='btn btn-primary' value='"+user_id+"' onclick='updateData(this.value)'>수정</button>"+"<br></td>";
 //					res +="<td><br>"+"<button type='button' class='btn btn-primary' value='"+user_id+"' onclick='updateData(this.value)'>삭제</button>"+"<br></td>";
-					res +="<td><br>"+"<button type='button' class='btn btn-primary' onclick='toInput(\""+user_id+"\",\""+user_name+"\",\""+user_phone+"\",\""+user_grade+"\")'>수정</button>"+"<br></td>";
+					res +="<td><br>"+"<button type='button' class='btn btn-primary' onclick='toInput(\""+user_id+"\",\""+user_name+"\",\""+user_phone+"\",\""+user_gender+"\")'>수정</button>"+"<br></td>";
 					res +="<td><br>"+"<button type='button' class='btn btn-primary' value='"+user_id+"' onclick='deleteConfirm(this.value)'>삭제</button>"+"<br></td>";
 					res +="</tr>";
 				}
