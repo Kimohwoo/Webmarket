@@ -1,7 +1,6 @@
 package db.beans;
 
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -239,7 +238,8 @@ public class QueryBean
 			
 			pstmt.setString(1, memberId);
 			
-			System.out.println("쿼리문 확인 : " + pstmt.toString());
+			
+			System.out.println("쿼리문 확인 : " + query1);
 			result = pstmt.executeUpdate();//쿼리를 db에 날린다 최종적으로!
 			//executeUpdate()함수는 insert, update, delete에만 쓴다! select에는 안쓴다!
 			//왜 그러냐면, 반환값이 다르다~! int이다~! cf)select는 ResultSet으로 반환한다.

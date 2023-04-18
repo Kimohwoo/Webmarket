@@ -87,19 +87,17 @@ function resSelectData()
 			{
 				for(var i=0; i<num; i++)
 				{
-					var user_id = objRes.datas[i].ID;
-					var user_name = objRes.datas[i].PASSWORD;
-					var user_phone = objRes.datas[i].NAME;
-					var user_gender = objRes.datas[i].GENDER;
-					var user_time = objRes.datas[i].REGIST_DAY;
+					var user_id = objRes.datas[i].id;
+					var user_name = objRes.datas[i].password;
+					var user_phone = objRes.datas[i].name;
+					var user_gender = objRes.datas[i].gender;
+					var user_time = objRes.datas[i].regist_day;
 					
 					res +="<tr class='table-active'>";
 					res +="<td >"+user_id+"</td>";
 					res +="<td><br>"+user_name+"<br></td>";
 					res +="<td><br>"+user_phone+"<br></td>";
-//					res +="<td><br>"+"<button type='button' class='btn btn-primary' value='"+user_id+"' onclick='updateData(this.value)'>수정</button>"+"<br></td>";
-//					res +="<td><br>"+"<button type='button' class='btn btn-primary' value='"+user_id+"' onclick='updateData(this.value)'>삭제</button>"+"<br></td>";
-					res +="<td><br>"+"<button type='button' class='btn btn-primary' onclick='toInput(\""+user_id+"\",\""+user_name+"\",\""+user_phone+"\",\""+user_gender+"\")'>수정</button>"+"<br></td>";
+// 					res +="<td><br>"+"<button type='button' class='btn btn-primary' onclick='toInput(\""+user_id+"\",\""+user_name+"\",\""+user_phone+"\",\""+user_gender+"\")'>수정</button>"+"<br></td>";
 					res +="<td><br>"+"<button type='button' class='btn btn-primary' value='"+user_id+"' onclick='deleteConfirm(this.value)'>삭제</button>"+"<br></td>";
 					res +="</tr>";
 				}
@@ -125,7 +123,7 @@ function deleteData(user_id)//json 요청
 	ajax1 = new XMLHttpRequest();
 	
 //		var url = "./testFile.jsp"; //요청 url 설정
-	var url = "./db_delete.jsp"; //요청 url 설정
+	var url = "./db/db_delete.jsp"; //요청 url 설정
 	
 	var reqparam  = "user_id=" + user_id;
 	
