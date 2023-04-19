@@ -7,12 +7,12 @@ public class BookDTO {
 	private String id;
 	private String name;
 	private String author;
-	private Date date;
-	private int price;
 	private String description;
 	private String fileName;
 	private String publisher;
 	private String reg;
+	private Date date;
+	private int price;
 	private int quantity;
 	
 	public BookDTO() {

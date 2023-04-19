@@ -5,12 +5,14 @@
 %>
 
 <script src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
+
 <%-- <script src="<c:url value="/resources/js/popper.min.js"/>"></script> --%>
 <%-- <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script> --%>
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
-<script>
-	window.jQuery || document.write('<script src="<c:url value="/resources/js/jquery-slim.min.js"/>"><\/script>')
-<script src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
+<!-- <script> -->
+<%-- // // 	window.jQuery || document.write('<script src="<c:url value="/resources/js/jquery-slim.min.js"/>"><\/script>') --%>
+<!-- <script src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script> -->
+
 <script type="text/javascript">
 	$(function(){
 		$('.dropdown-menu').hide();
@@ -22,99 +24,53 @@
 		});
 	});
 
-	let ajax1;
+// 	let ajax1;
 	
-	function selectData(){
-		let form_name = "searchForm";
-		let user_id = <%=sessionId%>;
-		
-		let url = "./db/db_select.jsp";
-		
-		let reqparam = "user_id=" + user_id;
-		ajax1.onreadystatechange = resSelectData;
-		ajax1.open("Post", url, "true");
-		ajax1.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
-		ajax1.send(reqparam);
-		
-		
-	}
-	function resSelectData(){
-		if(ajax1.readyState == 4){
-			if(ajax1.status == 200){
-				
-				let result = ajax1.responseText;
-				
-				let objRes = eval("("+result+")");
-				
-				let num = objRes.datas.length;
-				let res = "<table class='table table-hover'>";
-				let resDiv = document.getElementById("div_res");
-				
-				if(num < 1){
-					res += "<tr><td align = 'center' style='font-size: 20;'>검색 결과가 없습니다.</td></tr>";
-				} else {
-					for(let i = 0; i < num; i++){
-						let user_id = objRes.datas[i].ID;
-						let context = objRes.datas[i].context;
-						let regdate = objRes.datas[i].regdate;
-						
-						res += "<tr class='table-active'>";
-						res += "<td>" + context + "</td>";
-						res += "</tr>";
-					}
-				}	
-				res += "</table>";
-				
-				resDiv.innerHTML = res;
-			}
-		}
-	}
-	
-// 	function insertData(){
-// 		let form_name = 'searchForm';
-		
+// 	function selectData(){
+// 		let form_name = "searchForm";
 <%-- 		let user_id = <%=sessionId%>; --%>
-// 		let context = document.forms[form_name].elements['context'].value;
 		
-// 		ajax1 = new XMLHttpRequest();
-		
-// 		let url = "./db_insert.jsp";
+// 		let url = "./db/db_select.jsp";
 		
 // 		let reqparam = "user_id=" + user_id;
-// 			reqparam += "&context=" + context;
-			
-// 		ajax1.onreadystatechange = resInsertData;
+// 		ajax1.onreadystatechange = resSelectData;
 // 		ajax1.open("Post", url, "true");
 // 		ajax1.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 // 		ajax1.send(reqparam);
+		
+		
 // 	}
-	
-// 	function resInsertData(){
-// 		if(ajax1 == 4){
+// 	function resSelectData(){
+// 		if(ajax1.readyState == 4){
 // 			if(ajax1.status == 200){
 				
 // 				let result = ajax1.responseText;
+				
 // 				let objRes = eval("("+result+")");
-// 				let resDiv = document.getElementById('div_res');
-// 				let res = "";
 				
-// 				let success = objRes.SUCCESS;
+// 				let num = objRes.datas.length;
+// 				let res = "<table class='table table-hover'>";
+// 				let resDiv = document.getElementById("div_res");
 				
-// 				if(success == "1"){
-// 					alert("입력 성공");
-// 					res = "<p>입력 성공</p>";
-// 				}
-// 				if(success == "0"){
-// 					alert("입력 실패")	;
-// 					res = "<p>입력 실패</p>";
-// 				}
+// 				if(num < 1){
+// 					res += "<tr><td align = 'center' style='font-size: 20;'>검색 결과가 없습니다.</td></tr>";
+// 				} else {
+// 					for(let i = 0; i < num; i++){
+// 						let user_id = objRes.datas[i].ID;
+// 						let context = objRes.datas[i].context;
+// 						let regdate = objRes.datas[i].regdate;
+						
+// 						res += "<tr class='table-active'>";
+// 						res += "<td>" + context + "</td>";
+// 						res += "</tr>";
+// 					}
+// 				}	
+// 				res += "</table>";
 				
 // 				resDiv.innerHTML = res;
-// 				selectData();	
 // 			}
 // 		}
 // 	}
-
 	
 </script>
 <style>

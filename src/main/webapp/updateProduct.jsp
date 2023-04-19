@@ -4,6 +4,15 @@
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <title>상품 수정</title>
+<script type="text/javascript">
+	function deleteConfirm(id){
+		if(confirm("해당 상품을 삭제합니다!!")== true){
+			location.href="./deleteProduct.jsp?id=" + id;
+		} else {
+			return;
+		}
+	}
+</script>
 </head>
 <body>
 	<jsp:include page="menu.jsp" />
@@ -26,7 +35,7 @@
 		<div class="row">
 			<div class="col-md-5">
 				<img src="./upload2/<%=rs.getString("b_filename")%>" alt="image"
-					style="width: 100%" />
+					style="width: 50%" />
 			</div>
 			<div class="col-md-7">
 				<form name="newProduct" action="./processUpdateProduct.jsp"
@@ -88,7 +97,8 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-offset-2 col-sm-10 ">
-							<input type="submit" class="btn btn-primary" value="등록">
+							<input type="submit" class="btn btn-primary" value="수정">
+							<a href="#" onclick="deleteConfirm('<%=rs.getString("b_id")%>')" class="btn btn-danger" role="button">삭제 &raquo;></a>
 						</div>
 					</div>
 				</form>

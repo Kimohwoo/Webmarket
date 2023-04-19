@@ -4,12 +4,12 @@
 <%
 	String productId = request.getParameter("id");	
 
-	String sql = "select * from product";
+	String sql = " SELECT * FROM book ";
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 
 	if (rs.next()) {
-		sql = "delete from product where p_id = ?";
+		sql = "DELETE FROM book WHERE b_id = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, productId);
 		pstmt.executeUpdate();

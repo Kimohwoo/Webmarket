@@ -14,7 +14,7 @@
 	
 	if (rs.next()) {
 		
-		goods.setId("b_id");
+		goods.setId(rs.getString("b_id"));
 		goods.setName(rs.getString("b_name"));
 		goods.setAuthor(rs.getString("b_author"));
 		goods.setPublisher(rs.getString("b_publisher"));
